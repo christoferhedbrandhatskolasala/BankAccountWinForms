@@ -7,30 +7,20 @@ namespace BankAccountWinForms
         public Form1()
         {
             InitializeComponent();
-            updateBalanceLabel();
+            label1.Text = bankAccount.GetBalance().ToString();
         }
 
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
-            int amount = parseAmount();
+            int amount = int.Parse(textBox1.Text);
             bankAccount.Deposit(amount);
-            updateBalanceLabel();
+            label1.Text = bankAccount.GetBalance().ToString();
         }
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
         {
-            int amount = parseAmount();
+            int amount = int.Parse(textBox1.Text);
             bankAccount.Withdraw(amount);
-            updateBalanceLabel();
-        }
-
-        private int parseAmount()
-        {
-            return int.Parse(textBox1.Text);
-        }
-
-        private void updateBalanceLabel()
-        {
             label1.Text = bankAccount.GetBalance().ToString();
         }
     }
